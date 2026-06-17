@@ -410,19 +410,19 @@ class K40_GUI_Mixin:
 
         #Speed
         self.Label_Reng_feed_u = ttk.Label(self.master,textvariable=self.funits, anchor=W)
-        self.Entry_Reng_feed   = ttk.Entry(self.LeftPanel,width="15")
-        self.Entry_Reng_feed.configure(textvariable=self.Reng_feed,justify='center',fg="black")
+        self.Entry_Reng_feed   = Entry(self.LeftPanel,width="15")
+        self.Entry_Reng_feed.configure(textvariable=self.Reng_feed,justify='center')
         trace_variable(self.Reng_feed, self.Entry_Reng_feed_Callback)
         self.NormalColor =  self.Entry_Reng_feed.cget('bg')
 
         self.Label_Veng_feed_u = ttk.Label(self.master,textvariable=self.funits, anchor=W)
-        self.Entry_Veng_feed   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Veng_feed   = Entry(self.LeftPanel,width="15")
         self.Entry_Veng_feed.configure(textvariable=self.Veng_feed,justify='center',fg="blue")
         trace_variable(self.Veng_feed, self.Entry_Veng_feed_Callback)
         self.NormalColor =  self.Entry_Veng_feed.cget('bg')
 
         self.Label_Vcut_feed_u = ttk.Label(self.master,textvariable=self.funits, anchor=W)
-        self.Entry_Vcut_feed   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Vcut_feed   = Entry(self.LeftPanel,width="15")
         self.Entry_Vcut_feed.configure(textvariable=self.Vcut_feed,justify='center',fg="red")
         trace_variable(self.Vcut_feed, self.Entry_Vcut_feed_Callback)
         self.NormalColor =  self.Entry_Vcut_feed.cget('bg')
@@ -435,22 +435,22 @@ class K40_GUI_Mixin:
         self.Label_power2_u= Label(text="Power\nFraction", anchor=CENTER)
                         
         
-        self.Entry_Reng_power   = ttk.Entry(self.LeftPanel,width="15")
-        self.Entry_Reng_power.configure(textvariable=self.Reng_power,justify='center',fg="black")
+        self.Entry_Reng_power   = Entry(self.LeftPanel,width="15")
+        self.Entry_Reng_power.configure(textvariable=self.Reng_power,justify='center')
         trace_variable(self.Reng_power, self.Entry_Reng_power_Callback)
         self.NormalColor =  self.Entry_Reng_power.cget('bg')
 
-        self.Entry_Veng_power   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Veng_power   = Entry(self.LeftPanel,width="15")
         self.Entry_Veng_power.configure(textvariable=self.Veng_power,justify='center',fg="blue")
         trace_variable(self.Veng_power, self.Entry_Veng_power_Callback)
         self.NormalColor =  self.Entry_Veng_power.cget('bg')
 
-        self.Entry_Vcut_power   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Vcut_power   = Entry(self.LeftPanel,width="15")
         self.Entry_Vcut_power.configure(textvariable=self.Vcut_power,justify='center',fg="red")
         trace_variable(self.Vcut_power, self.Entry_Vcut_power_Callback)
         self.NormalColor =  self.Entry_Vcut_power.cget('bg')
 
-        self.Entry_Gcode_power   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Gcode_power   = Entry(self.LeftPanel,width="15")
         self.Entry_Gcode_power.configure(textvariable=self.Gcode_power,justify='center',fg="red")
         trace_variable(self.Gcode_power, self.Entry_Gcode_power_Callback)
         self.NormalColor =  self.Entry_Gcode_power.cget('bg')
@@ -459,15 +459,15 @@ class K40_GUI_Mixin:
         ### Test Fire ###
         self.Test_Button  = ttk.Button(self.LeftPanel,text="Test Fire Laser", command=self.Test_Fire)
         self.Label_Test_time_u = ttk.Label(self.master,text="ms", anchor=W)
-        self.Entry_Test_time   = ttk.Entry(self.LeftPanel,width="15")
-        self.Entry_Test_time.configure(textvariable=self.test_time,justify='center',fg="black")
+        self.Entry_Test_time   = Entry(self.LeftPanel,width="15")
+        self.Entry_Test_time.configure(textvariable=self.test_time,justify='center')
 
         trace_variable(self.test_time, self.Entry_Test_time_Callback)
         self.NormalColor =  self.Entry_Test_time.cget('bg')
         
-        self.Entry_Test_power   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Test_power   = Entry(self.LeftPanel,width="15")
         self.Label_Test_power_u = ttk.Label(self.master,text="%", anchor=W)
-        self.Entry_Test_power.configure(textvariable=self.test_power,justify='center',fg="black")
+        self.Entry_Test_power.configure(textvariable=self.test_power,justify='center')
         trace_variable(self.test_power, self.Entry_Test_power_Callback)
         self.NormalColor =  self.Entry_Test_power.cget('bg')
 
@@ -532,17 +532,17 @@ class K40_GUI_Mixin:
 
         self.Label_Step   = ttk.Label(self.master,text="Jog Step", anchor=CENTER )
         self.Label_Step_u = ttk.Label(self.master,textvariable=self.units, anchor=W)
-        self.Entry_Step   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Step   = Entry(self.LeftPanel,width="15")
         self.Entry_Step.configure(textvariable=self.jog_step, justify='center')
         trace_variable(self.jog_step, self.Entry_Step_Callback)
 
         ###########################################################################
         self.GoTo_Button    = ttk.Button(self.LeftPanel,text="Move To", command=self.GoTo)
         
-        self.Entry_GoToX   = ttk.Entry(self.LeftPanel,width="15",justify='center')
+        self.Entry_GoToX   = Entry(self.LeftPanel,width="15",justify='center')
         self.Entry_GoToX.configure(textvariable=self.gotoX)
         trace_variable(self.gotoX, self.Entry_GoToX_Callback)
-        self.Entry_GoToY   = ttk.Entry(self.LeftPanel,width="15",justify='center')
+        self.Entry_GoToY   = Entry(self.LeftPanel,width="15",justify='center')
         self.Entry_GoToY.configure(textvariable=self.gotoY)
         trace_variable(self.gotoY, self.Entry_GoToY_Callback)
         
@@ -557,45 +557,45 @@ class K40_GUI_Mixin:
         self.separator_adv = Frame(self.master, height=2, bd=1, relief=SUNKEN)       
 
         self.Label_Halftone_adv = ttk.Label(self.master,text="Halftone (Dither)")
-        self.Checkbutton_Halftone_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_Halftone_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_Halftone_adv.configure(variable=self.halftone)
         trace_variable(self.halftone, self.View_Refresh_and_Reset_RasterPath) #self.menu_View_Refresh_Callback
 
         self.Label_Negate_adv = ttk.Label(self.master,text="Invert Raster Color")
-        self.Checkbutton_Negate_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_Negate_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_Negate_adv.configure(variable=self.negate)
         trace_variable(self.negate, self.View_Refresh_and_Reset_RasterPath)
 
         self.separator_adv2 = Frame(self.master, height=2, bd=1, relief=SUNKEN)  
 
         self.Label_Mirror_adv = ttk.Label(self.master,text="Mirror Design")
-        self.Checkbutton_Mirror_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_Mirror_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_Mirror_adv.configure(variable=self.mirror)
         trace_variable(self.mirror, self.View_Refresh_and_Reset_RasterPath)
 
         self.Label_Rotate_adv = ttk.Label(self.master,text="Rotate Design")
-        self.Checkbutton_Rotate_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_Rotate_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_Rotate_adv.configure(variable=self.rotate)
         trace_variable(self.rotate, self.View_Refresh_and_Reset_RasterPath)
 
         self.separator_adv3 = Frame(self.master, height=2, bd=1, relief=SUNKEN)
         
         self.Label_inputCSYS_adv = ttk.Label(self.master,text="Use Input CSYS")
-        self.Checkbutton_inputCSYS_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_inputCSYS_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_inputCSYS_adv.configure(variable=self.inputCSYS)
         trace_variable(self.inputCSYS, self.menu_View_inputCSYS_Refresh_Callback)
 
         self.Label_Inside_First_adv = ttk.Label(self.master,text="Cut Inside First")
-        self.Checkbutton_Inside_First_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_Inside_First_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_Inside_First_adv.configure(variable=self.inside_first)
         trace_variable(self.inside_first, self.menu_Inside_First_Callback)
 
         self.Label_Inside_First_adv = ttk.Label(self.master,text="Cut Inside First")
-        self.Checkbutton_Inside_First_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_Inside_First_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_Inside_First_adv.configure(variable=self.inside_first)
 
         self.Label_Rotary_Enable_adv = ttk.Label(self.master,text="Use Rotary Settings")
-        self.Checkbutton_Rotary_Enable_adv = ttk.Checkbutton(self.LeftPanel,text="")
+        self.Checkbutton_Rotary_Enable_adv = Checkbutton(self.LeftPanel,text="")
         self.Checkbutton_Rotary_Enable_adv.configure(variable=self.rotary)
         trace_variable(self.rotary, self.Reset_RasterPath_and_Update_Time)
 
@@ -604,37 +604,37 @@ class K40_GUI_Mixin:
         self.separator_comb = Frame(self.master, height=2, bd=1, relief=SUNKEN)  
 
         self.Label_Comb_Engrave_adv = ttk.Label(self.master,text="Group Engrave Tasks")
-        self.Checkbutton_Comb_Engrave_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_Comb_Engrave_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_Comb_Engrave_adv.configure(variable=self.comb_engrave)
         trace_variable(self.comb_engrave, self.menu_View_Refresh_Callback)
 
         self.Label_Comb_Vector_adv = ttk.Label(self.master,text="Group Vector Tasks")
-        self.Checkbutton_Comb_Vector_adv = ttk.Checkbutton(self.LeftPanel,text=" ", anchor=W)
+        self.Checkbutton_Comb_Vector_adv = Checkbutton(self.LeftPanel,text=" ", anchor=W)
         self.Checkbutton_Comb_Vector_adv.configure(variable=self.comb_vector)
         trace_variable(self.comb_vector, self.menu_View_Refresh_Callback) 
         #####
         
         self.Label_Reng_passes = ttk.Label(self.master,text="Raster Eng. Passes")
-        self.Entry_Reng_passes   = ttk.Entry(self.LeftPanel,width="15")
-        self.Entry_Reng_passes.configure(textvariable=self.Reng_passes,justify='center',fg="black")
+        self.Entry_Reng_passes   = Entry(self.LeftPanel,width="15")
+        self.Entry_Reng_passes.configure(textvariable=self.Reng_passes,justify='center')
         trace_variable(self.Reng_passes, self.Entry_Reng_passes_Callback)
         self.NormalColor =  self.Entry_Reng_passes.cget('bg')
 
         self.Label_Veng_passes = ttk.Label(self.master,text="Vector Eng. Passes")
-        self.Entry_Veng_passes   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Veng_passes   = Entry(self.LeftPanel,width="15")
         self.Entry_Veng_passes.configure(textvariable=self.Veng_passes,justify='center',fg="blue")
         trace_variable(self.Veng_passes, self.Entry_Veng_passes_Callback)
         self.NormalColor =  self.Entry_Veng_passes.cget('bg')
 
         self.Label_Vcut_passes = ttk.Label(self.master,text="Vector Cut Passes")
-        self.Entry_Vcut_passes   = ttk.Entry(self.LeftPanel,width="15")
+        self.Entry_Vcut_passes   = Entry(self.LeftPanel,width="15")
         self.Entry_Vcut_passes.configure(textvariable=self.Vcut_passes,justify='center',fg="red")
         trace_variable(self.Vcut_passes, self.Entry_Vcut_passes_Callback)
         self.NormalColor =  self.Entry_Vcut_passes.cget('bg')
 
         self.Label_Gcde_passes = ttk.Label(self.master,text="G-Code Passes")
-        self.Entry_Gcde_passes   = ttk.Entry(self.LeftPanel,width="15")
-        self.Entry_Gcde_passes.configure(textvariable=self.Gcde_passes,justify='center',fg="black")
+        self.Entry_Gcde_passes   = Entry(self.LeftPanel,width="15")
+        self.Entry_Gcde_passes.configure(textvariable=self.Gcde_passes,justify='center')
         trace_variable(self.Gcde_passes, self.Entry_Gcde_passes_Callback)
         self.NormalColor =  self.Entry_Gcde_passes.cget('bg')
 
@@ -799,8 +799,8 @@ class K40_GUI_Mixin:
         self.Reload_Button.grid(row=row, column=1, sticky="ew", padx=(2,0))
         
         row += 1
-        pos_frame = ttk.LabelFrame(self.LeftPanel, text="Position Controls", padding=5)
-        pos_frame.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10)
+        pos_frame = ttk.Labelframe(self.LeftPanel, text="Position Controls")
+        pos_frame.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10, ipadx=5, ipady=5)
         
         self.Home_Button.grid(in_=pos_frame, row=0, column=0, sticky="ew", padx=2)
         self.UnLock_Button.grid(in_=pos_frame, row=0, column=1, sticky="ew", padx=2)
@@ -819,8 +819,8 @@ class K40_GUI_Mixin:
         self.GoTo_Button.grid(in_=pos_frame, row=3, column=0, columnspan=2, sticky="ew", pady=5)
         
         row += 1
-        eng_frame = ttk.LabelFrame(self.LeftPanel, text="Engraving & Cutting Parameters", padding=5)
-        eng_frame.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10)
+        eng_frame = ttk.Labelframe(self.LeftPanel, text="Engraving & Cutting Parameters")
+        eng_frame.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10, ipadx=5, ipady=5)
         
         self.Reng_Button.grid(in_=eng_frame, row=0, column=0, sticky="ew", pady=2)
         self.Entry_Reng_feed.grid(in_=eng_frame, row=0, column=1, pady=2, padx=2)
