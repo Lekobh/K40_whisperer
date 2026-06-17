@@ -1,0 +1,25 @@
+# Python cache and local runtime files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build outputs
+build/
+dist/
+*.egg-info/
+
+# Local editor and OS files
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini
+
+# K40 Whisperer local settings / generated data
+*.bak
+*.tmp
+*.log
