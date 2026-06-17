@@ -777,19 +777,7 @@ class K40_GUI_Mixin:
 
 ################################################################################
 
-    def Master_Configure(self, event, update=0):
-        if event.widget != self.master:
-            return
-            
-        x = int(self.master.winfo_x())
-        y = int(self.master.winfo_y())
-        w = int(self.master.winfo_width())
-        h = int(self.master.winfo_height())
-        if (self.x, self.y) == (-1,-1):
-            self.x, self.y = x,y
-            
-        # Re-layout the widgets using grid inside LeftPanel
-        
+        # --- STATIC LAYOUT ---
         row = 0
         self.Initialize_Button.grid(row=row, column=0, columnspan=2, sticky="ew", pady=5)
         self.Initialize_Button.configure(bootstyle=PRIMARY)
@@ -799,38 +787,47 @@ class K40_GUI_Mixin:
         self.Reload_Button.grid(row=row, column=1, sticky="ew", padx=(2,0))
         
         row += 1
-        pos_frame = ttk.Labelframe(self.LeftPanel, text="Position Controls")
-        pos_frame.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10, ipadx=5, ipady=5)
+        self.pos_frame = ttk.Labelframe(self.LeftPanel, text="Position Controls")
+        self.pos_frame.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10, ipadx=5, ipady=5)
         
-        self.Home_Button.grid(in_=pos_frame, row=0, column=0, sticky="ew", padx=2)
-        self.UnLock_Button.grid(in_=pos_frame, row=0, column=1, sticky="ew", padx=2)
+        self.Home_Button.grid(in_=self.pos_frame, row=0, column=0, sticky="ew", padx=2)
+        self.UnLock_Button.grid(in_=self.pos_frame, row=0, column=1, sticky="ew", padx=2)
         
-        self.Label_Step.grid(in_=pos_frame, row=1, column=0, pady=5)
-        self.Entry_Step.grid(in_=pos_frame, row=1, column=1, pady=5)
+        self.Label_Step.grid(in_=self.pos_frame, row=1, column=0, pady=5)
+        self.Entry_Step.grid(in_=self.pos_frame, row=1, column=1, pady=5)
         
-        dpad_frame = ttk.Frame(pos_frame)
-        dpad_frame.grid(row=2, column=0, columnspan=2, pady=5)
-        self.Up_Button.grid(in_=dpad_frame, row=0, column=1)
-        self.Left_Button.grid(in_=dpad_frame, row=1, column=0)
-        self.CC_Button.grid(in_=dpad_frame, row=1, column=1)
-        self.Right_Button.grid(in_=dpad_frame, row=1, column=2)
-        self.Down_Button.grid(in_=dpad_frame, row=2, column=1)
+        self.dpad_frame = ttk.Frame(self.pos_frame)
+        self.dpad_frame.grid(row=2, column=0, columnspan=2, pady=5)
+        self.Up_Button.grid(in_=self.dpad_frame, row=0, column=1)
+        self.Left_Button.grid(in_=self.dpad_frame, row=1, column=0)
+        self.CC_Button.grid(in_=self.dpad_frame, row=1, column=1)
+        self.Right_Button.grid(in_=self.dpad_frame, row=1, column=2)
+        self.Down_Button.grid(in_=self.dpad_frame, row=2, column=1)
         
-        self.GoTo_Button.grid(in_=pos_frame, row=3, column=0, columnspan=2, sticky="ew", pady=5)
+        self.GoTo_Button.grid(in_=self.pos_frame, row=3, column=0, columnspan=2, sticky="ew", pady=5)
         
         row += 1
-        eng_frame = ttk.Labelframe(self.LeftPanel, text="Engraving & Cutting Parameters")
-        eng_frame.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10, ipadx=5, ipady=5)
+        self.eng_frame = ttk.Labelframe(self.LeftPanel, text="Engraving & Cutting Parameters")
+        self.eng_frame.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10, ipadx=5, ipady=5)
         
-        self.Reng_Button.grid(in_=eng_frame, row=0, column=0, sticky="ew", pady=2)
-        self.Entry_Reng_feed.grid(in_=eng_frame, row=0, column=1, pady=2, padx=2)
+        self.Reng_Button.grid(in_=self.eng_frame, row=0, column=0, sticky="ew", pady=2)
+        self.Entry_Reng_feed.grid(in_=self.eng_frame, row=0, column=1, pady=2, padx=2)
         
-        self.Veng_Button.grid(in_=eng_frame, row=1, column=0, sticky="ew", pady=2)
-        self.Entry_Veng_feed.grid(in_=eng_frame, row=1, column=1, pady=2, padx=2)
+        self.Veng_Button.grid(in_=self.eng_frame, row=1, column=0, sticky="ew", pady=2)
+        self.Entry_Veng_feed.grid(in_=self.eng_frame, row=1, column=1, pady=2, padx=2)
         
-        self.Vcut_Button.grid(in_=eng_frame, row=2, column=0, sticky="ew", pady=2)
-        self.Entry_Vcut_feed.grid(in_=eng_frame, row=2, column=1, pady=2, padx=2)
+        self.Vcut_Button.grid(in_=self.eng_frame, row=2, column=0, sticky="ew", pady=2)
+        self.Entry_Vcut_feed.grid(in_=self.eng_frame, row=2, column=1, pady=2, padx=2)
         
         row += 1
         self.Stop_Button.grid(row=row, column=0, columnspan=2, sticky="ew", pady=10)
         self.Stop_Button.configure(bootstyle=DANGER)
+
+    def Master_Configure(self, event, update=0):
+        if getattr(self, 'master', None) and event.widget != self.master:
+            return
+            
+        x = int(self.master.winfo_x())
+        y = int(self.master.winfo_y())
+        if (self.x, self.y) == (-1,-1):
+            self.x, self.y = x,y
