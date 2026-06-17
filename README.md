@@ -10,7 +10,7 @@
 
 - Pagina oficial do projeto: <https://www.scorchworks.com/K40whisperer/k40whisperer.html>
 - Site do Scorch Works: <https://www.scorchworks.com/>
-- Licenca do projeto: [GNU GPL v3 ou posterior](gpl-3.0.txt)
+- Licenca do projeto: [GNU GPL v3 ou posterior](LICENSE)
 - Manual oficial: linkado na pagina oficial do K40 Whisperer
 - Historico local de mudancas: [Change_Log.txt](Change_Log.txt)
 
@@ -46,7 +46,8 @@ Ao redistribuir, modificar ou publicar esta copia, preserve:
 - Versao do programa no codigo fonte: `0.71`
 - Arquivo principal: [k40_whisperer.py](k40_whisperer.py)
 - Dependencias Python: [requirements.txt](requirements.txt)
-- Licenca: [gpl-3.0.txt](gpl-3.0.txt)
+- Licenca principal para GitHub: [LICENSE](LICENSE)
+- Copia original da licenca incluida no pacote: [gpl-3.0.txt](gpl-3.0.txt)
 
 ## Recursos principais
 
@@ -201,7 +202,8 @@ Software nao substitui procedimento seguro de operacao.
 
 K40 Whisperer e distribuido como software livre sob a GNU General Public License,
 versao 3 ou posterior, conforme os avisos de copyright do codigo fonte e o
-arquivo [gpl-3.0.txt](gpl-3.0.txt).
+arquivo [LICENSE](LICENSE). O arquivo [gpl-3.0.txt](gpl-3.0.txt) tambem foi
+preservado por fazer parte desta copia do pacote original.
 
 Se voce publicar uma copia, modificar o codigo ou redistribuir builds, preserve
 a licenca e os creditos do autor original.
