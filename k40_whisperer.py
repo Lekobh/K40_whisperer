@@ -87,6 +87,46 @@ from PIL import Image
 from PIL import ImageOps
 from PIL import ImageFilter
 
+# --- CUSTOMTKINTER INJECTION ---
+import customtkinter as ctk
+
+class CTkButtonWrapper(ctk.CTkButton):
+    def __init__(self, master, **kwargs):
+        if 'bg' in kwargs: kwargs['fg_color'] = kwargs.pop('bg')
+        if 'activebackground' in kwargs: kwargs['hover_color'] = kwargs.pop('activebackground')
+        if 'relief' in kwargs: kwargs.pop('relief')
+        if 'bd' in kwargs: kwargs.pop('bd')
+        if 'highlightthickness' in kwargs: kwargs.pop('highlightthickness')
+        
+        if 'fg_color' not in kwargs:
+            kwargs['fg_color'] = '#1f538d'
+        
+        super().__init__(master, **kwargs)
+
+    def configure(self, **kwargs):
+        if 'bg' in kwargs: kwargs['fg_color'] = kwargs.pop('bg')
+        if 'state' in kwargs:
+            state = kwargs['state']
+            if state == 'normal' or state == 'active' or state == 'NORMAL' or state == 'ACTIVE':
+                kwargs['state'] = 'normal'
+            else:
+                kwargs['state'] = 'disabled'
+        super().configure(**kwargs)
+        
+    def config(self, **kwargs):
+        self.configure(**kwargs)
+
+    def place(self, **kwargs):
+        if 'width' in kwargs:
+            self.configure(width=kwargs.pop('width'))
+        if 'height' in kwargs:
+            self.configure(height=kwargs.pop('height'))
+        super().place(**kwargs)
+
+ctk.set_appearance_mode('System')
+ctk.set_default_color_theme('blue')
+# -------------------------------
+
 try:
     Image.warnings.simplefilter('ignore', Image.DecompressionBombWarning)
 except:
@@ -593,9 +633,9 @@ class Application(Frame):
         ##################
                         
         # Buttons
-        self.Reng_Button  = Button(self.master,text="Raster Engrave", command=self.Raster_Eng)
-        self.Veng_Button  = Button(self.master,text="Vector Engrave", command=self.Vector_Eng)
-        self.Vcut_Button  = Button(self.master,text="Vector Cut"    , command=self.Vector_Cut)
+        self.Reng_Button  = CTkButtonWrapper(self.master,text="Raster Engrave", command=self.Raster_Eng)
+        self.Veng_Button  = CTkButtonWrapper(self.master,text="Vector Engrave", command=self.Vector_Eng)
+        self.Vcut_Button  = CTkButtonWrapper(self.master, fg_color="#c83232", hover_color="#a02828", text="Vector Cut", command=self.Vector_Cut)
         self.Grun_Button  = Button(self.master,text="Run G-Code"    , command=self.Gcode_Cut)
 
 
@@ -604,15 +644,14 @@ class Application(Frame):
         self.Reng_Veng_Vcut_Button = Button(self.master,text="Raster Engrave\nVector Engrave\nand\nVector Cut", command=self.Raster_Vector_Cut)
         
         self.Label_Position_Control = Label(self.master,text="Position Controls:", anchor=W)
-        
-        self.Initialize_Button = Button(self.master,text="Initialize Laser Cutter", command=self.Initialize_Laser)
+        self.Initialize_Button = CTkButtonWrapper(self.master,text="Initialize Laser Cutter", command=self.Initialize_Laser)
 
-        self.Open_Button       = Button(self.master,text="Open\nDesign File",   command=self.menu_File_Open_Design)
-        self.Reload_Button     = Button(self.master,text="Reload\nDesign File", command=self.menu_Reload_Design)
+        self.Open_Button       = CTkButtonWrapper(self.master,text="Open\nDesign File",   command=self.menu_File_Open_Design)
+        self.Reload_Button     = CTkButtonWrapper(self.master,text="Reload\nDesign File", command=self.menu_Reload_Design)
         
-        self.Home_Button       = Button(self.master,text="Home",            command=self.Home)
-        self.UnLock_Button     = Button(self.master,text="Unlock Rail",     command=self.Unlock)
-        self.Stop_Button       = Button(self.master,text="Pause/Stop",      command=self.Stop)
+        self.Home_Button       = CTkButtonWrapper(self.master,text="Home",            command=self.Home)
+        self.UnLock_Button     = CTkButtonWrapper(self.master,text="Unlock Rail",     command=self.Unlock)
+        self.Stop_Button       = CTkButtonWrapper(self.master,text="Pause/Stop",      command=self.Stop)
 
         try:            
             self.left_image  = PhotoImage(data=K40_Whisperer_Images.left_B64,  format='gif')
