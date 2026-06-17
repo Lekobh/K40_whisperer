@@ -10,7 +10,7 @@ if exist "build" rmdir /s /q "build"
 if exist "*.spec" del /q "*.spec"
 
 echo Building executable with PyInstaller...
-pyinstaller --noconfirm --onedir --windowed --icon "scorchworks.ico" --hidden-import lxml.etree --hidden-import lxml._elementpath k40_whisperer.py
+pyinstaller --noconfirm --onedir --windowed --icon "scorchworks.ico" --hidden-import lxml.etree --hidden-import lxml._elementpath --exclude-module numpy --exclude-module scipy --exclude-module pandas --exclude-module matplotlib --exclude-module cryptography k40_whisperer.py
 
 echo Build completed! Check the 'dist' folder.
 pause
