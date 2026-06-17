@@ -382,7 +382,7 @@ class K40_GUI_Mixin:
         self.PreviewCanvas_frame.pack(side=LEFT, fill=BOTH, expand=True)
         # -------------------------
 # make a Status Bar
-        self.statusbar = ttk.Label(self.master, textvariable=self.statusMessage, \
+        self.statusbar = Label(self.master, textvariable=self.statusMessage, \
                                    bd=1, relief=SUNKEN , height=1)
         self.statusbar.pack(anchor=SW, fill=X, side=BOTTOM)
         
